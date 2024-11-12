@@ -204,3 +204,11 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(navi_node src/navi_node.cpp)
+target_link_libraries(navi_node ${catkin_LIBRARIES})
+add_dependencies(navi_node navigation_pkg_generate_messages_cpp)
+
+add_executable(navi_subscriber src/navi_subscriber.cpp)
+target_link_libraries(navi_subscriber ${catkin_LIBRARIES})
+add_dependencies(navi_subscriber navigation_pkg_generate_messages_cpp)
