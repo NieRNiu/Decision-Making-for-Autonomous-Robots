@@ -62,12 +62,13 @@ bool srv_update_callback(world_percept_assig::UpdateObjectList::Request  &req,
 
     //Push the information that is obtained from the client via the request variables
     //TODO: Use the correct variables here (0.5 pt)
-    map_objs_.push_back(std::make_pair("something",geometry_msgs::Pose())); 
+    //map_objs_.push_back(std::make_pair("something",geometry_msgs::Pose())); 
+    map_objs_.push_back(std::make_pair(req.object_name, req.object_pose)); 
 
     for (size_t i = 0; i < map_objs_.size(); i++)
     {
         //TODO: Print the stored information (0.5 pt)
-        ROS_INFO_STREAM(": ");
+        ROS_INFO_STREAM("Object Name: " << map_objs_[i].first << " Object Pose: " << map_objs_[i].second);
     }
 
     res.confirmation = true;
@@ -85,24 +86,33 @@ void tf_timer_callback(const ros::TimerEvent& e)
     {
         geometry_msgs::TransformStamped ts;
         
-        std::string object_name = "string"; //TODO: use the correct variable (0.25 pts)
-        geometry_msgs::Pose obj_pose = geometry_msgs::Pose(); //TODO: use the correct variable (0.25 pt)
+        //std::string object_name = "string"; //TODO: use the correct variable (0.25 pts)
+        //geometry_msgs::Pose obj_pose = geometry_msgs::Pose(); //TODO: use the correct variable (0.25 pt)
+
+        std::string object_name = map_objs_[i].first ; //TODO: use the correct variable (0.25 pts)
+        geometry_msgs::Pose obj_pose = map_objs_[i].second; //TODO: use the correct variable (0.25 pt)
 
         // TF object to populate our TF message
         tf2::Transform tf;
 
         //TODO: use the correct variable to define the right object position (0.5 pts)
-        tf.setOrigin(tf2::Vector3(0,0,0)); 
+        //tf.setOrigin(tf2::Vector3(0,0,0)); 
 
         //TODO: use the correct variable to define the right object orientation (0.5 pts)
-        tf.setRotation(tf2::Quaternion(0,0,0,1)); 
+        //tf.setRotation(tf2::Quaternion(0,0,0,1)); 
+
+        //TODO: use the correct variable to define the right object position (0.5 pts)
+        tf.setOrigin(tf2::Vector3(obj_pose.position.x,obj_pose.position.y,obj_pose.position.z)); 
+
+        //TODO: use the correct variable to define the right object orientation (0.5 pts)
+        tf.setRotation(tf2::Quaternion(obj_pose.orientation.x,obj_pose.orientation.y,obj_pose.orientation.z,obj_pose.orientation.w)); 
 
         // Transform the TF object to TF message
         ts.transform = tf2::toMsg(tf);
 
         // Set the reference frame for the TF (parent link)
         //TODO: Define the right reference frame (0.5 pts)
-        ts.header.frame_id = "dummy";
+        ts.header.frame_id = "world";
         // Set the time stamp for the message
         ts.header.stamp = aux_time;
         // Set the name for the TF
