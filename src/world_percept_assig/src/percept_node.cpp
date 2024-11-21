@@ -73,14 +73,22 @@ private:
     //Get robot Pose
     geometry_msgs::Pose tiago_pose;
     //TODO: Search for tiago pose and save it in the variable "it", note the value "msg->name.end()" is wrong and needs to be fixed! (1pt)
-    // Hint, you can use the std::find() function to find if the "tiago" pose has beed detected 
-   auto it = msg->name.end(); 
+    // Hint, you can use the std::find() function to find if the "tiago" pose has beed detected
+    // Search for "tiago" in the msg->name vector
+   auto it = std::find(msg->name.begin(), msg->name.end(), "tiago");
+    // Check if "tiago" was found
     if (it != msg->name.end()) 
     {
-        // Calculate the index
+        // Calculate the index 
         int index = std::distance(msg->name.begin(), it);
-        tiago_pose=msg->pose.at(index);
+        tiago_pose = msg->pose.at(index);
     }
+    else
+    {
+        ROS_WARN("Tiago robot not found in ModelStates");
+    }
+
+
 
     // search new objects in the scene 
     for (int i = 0; i < msg->name.size(); i++)
@@ -92,21 +100,21 @@ private:
 
         // Get object pose
         //TODO: Identify the right variable that contains the correct object pose (0.5pts)
-        geometry_msgs::Pose obj_pose= geometry_msgs::Pose();
+        geometry_msgs::Pose obj_pose= msg->pose.at(i);
 
         // get distance from tiago to obj[i]
         //TODO: obtain the dx distance between the robot and the objects (0.5 pts)
-        double dx= 0;
+        double dx= tiago_pose.position.x - obj_pose.position.x;
         //TODO: obtain the dy distance between the robot and the objects (0.5 pts)
-        double dy=0;
+        double dy= tiago_pose.position.y - obj_pose.position.y;
         //TODO: compute the distance between the tiago and the objects (1pt)
-        double d=0;
+        double d= std::sqrt(dx*dx+dy*dy);
 
         //IF the robot is closer to the seen objects, then request the service
         if (d<1.1)
         {
             //TODO: Identify the object seen (0.5 pts)
-            std::string s= "something";
+            std::string s= msg->name[i];
             // Search for the obj name in the seen_list
             auto it = std::find(v_seen_obj_.begin(), v_seen_obj_.end(), s);
 
@@ -114,11 +122,10 @@ private:
             if (it == v_seen_obj_.end()) {
 
                 world_percept_assig::UpdateObjectList srv;
-
                 //TODO: send the new seen object to the service (0.25 pts)
-                srv.request.object_name="object";
+                srv.request.object_name= s;
                 //TODO: send the pose of the seen object to the service (0.25 pts)
-                srv.request.object_pose= geometry_msgs::Pose();
+                srv.request.object_pose= msg->pose.at(i);
 
                 if (client_map_generator_.call(srv))
                 {
@@ -140,10 +147,10 @@ private:
     }//for msg size
 
     //If you want to print the objects that the robot has seen so far, just uncomment the for 
-    //for (size_t i = 2; i < v_seen_obj_.size(); i++)
-    // {
-    //     ROS_INFO_STREAM("["<<i<<"]: "<<v_seen_obj_.at(i));
-    // }
+    for (size_t i = 2; i < v_seen_obj_.size(); i++)
+    {
+        ROS_INFO_STREAM("["<<i<<"]: "<<v_seen_obj_.at(i));
+    }
     
   } // callback
 
