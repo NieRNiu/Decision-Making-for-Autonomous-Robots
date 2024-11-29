@@ -4,6 +4,7 @@
 
 
 :- consult('instance_utils').
+:- consult('my_predicates').
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
