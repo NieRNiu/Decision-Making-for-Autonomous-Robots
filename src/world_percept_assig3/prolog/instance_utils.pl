@@ -94,9 +94,6 @@ getClassPath(Class, Class_path):-
 %					Class='Orange'  <- make sure this class exist in the ontology "ssy236Ontology"
 
 % TODO: A3.T02, properly define this predicate to check if  class already exists in the ontology ssy236Ontology. If the class does not exist, we need to assert a new one, otherwise nothing will happen.
-% get_class(Class):-
-%	write('New class created: '), write(Class), nl.
-
 get_class(Class) :-
     % Define the ontology prefix
     OntologyPrefix = 'http://www.chalmers.se/ontologies/ssy236Ontology.owl#',

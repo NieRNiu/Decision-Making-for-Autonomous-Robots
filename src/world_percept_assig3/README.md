@@ -1,8 +1,9 @@
-# world_percept_assig2
+# world_percept_assig3
+# Team 8: Xinzhu Niu, Dian Wang
 
-Please provide a ReadMe file with the instructions you use to run your solutions
+#Please provide a ReadMe file with the instructions you use to run your solutions
 
-For example:
+#For example:
 
 To run this package, do:
 
@@ -10,26 +11,35 @@ First indicate where the new gazebo world is located:
 
 In the docker container do:
 
-`export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/user/exchange/ssy236_karinne/src/world_percept_assig/  `
+`export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/user/exchange/SSY236_group8/src/world_percept_assig3/  `
 
-`source /home/user/exchange/ssy236_karinne/devel/setup.bash`
+`source /home/user/exchange/SSY236_group8/devel/setup.bash`
 
-`roslaunch world_percept_assig gazebo_ssy236.launch`
+`roslaunch world_percept_assig3 gazebo_ssy236.launch`
 
 Task 1:
 
-Run the XXX node
-
-`rosrun world_percept_assig2 XX_node`
+source ros on your computer:
+`source ~/knowrob_noetic/devel/setup.bash`
 
 Task 2:
 
-Run the client node
-
-`rosrun world_percept_assigs percept_node`
+Make the package, go to the /home/user/exchange/SSY236_group8 folder, and do:
+`catkin_make`
 
 Task 3:
 
-Launch the service node
+Source the package: 
+`source /home/user/exchange/SSY236_group8/devel/setup.bash`
 
-`roslaunch world_percept_assig2 XXX_node`
+Task 4:
+
+Launch the client node
+
+`roslaunch world_percept_assig3 reasoning.launch`
+
+Task 5:
+
+Run the service node
+
+`rosrun rosprolog rosprolog world_percept_assig3`

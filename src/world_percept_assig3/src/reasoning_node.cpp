@@ -85,19 +85,7 @@ private:
             res = true;
             ROS_INFO_STREAM("A new class was created in the ontology");
             break;
-        }
-
-        //bool res = false;
-        //for (auto &it : bdgs) 
-        //{
-        //    if (res == true)
-        //    {
-
-        //        ROS_INFO_STREAM("A new class was created in the ontology");
-        //    }
-        //}
-
-       
+        }  
     }
 
     bool assertKnowledge(std::string className)
@@ -116,10 +104,6 @@ private:
             for (auto val : *it)
             {
                 //A2.T03: Retrive the value from Prolog
-                //instanceName = val.second;
-                //instanceName = "object";
-                //std::ostringstream oss;
-                //oss << val; // PrologValue typically supports stream output for conversion
                 instanceName = val.first;
                 ROS_WARN_STREAM("new instance in knowledge base: "<<instanceName);
             }
