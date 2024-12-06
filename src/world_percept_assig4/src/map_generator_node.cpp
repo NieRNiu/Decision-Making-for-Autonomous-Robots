@@ -160,8 +160,8 @@ void tf_timer_callback(const ros::TimerEvent& e)
     {
         geometry_msgs::TransformStamped ts;
         
-        std::string object_name = "string"; //TODO: use the correct variable 
-        geometry_msgs::Pose obj_pose = geometry_msgs::Pose(); //TODO: use the correct variable 
+        std::string object_name = map_objs_.at(i).first ; //TODO: use the correct variable 
+        geometry_msgs::Pose obj_pose = map_objs_.at(i).second; //TODO: use the correct variable 
 
         // TF object to populate our TF message
         tf2::Transform tf;

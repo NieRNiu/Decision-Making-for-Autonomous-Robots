@@ -68,6 +68,7 @@ add_service_files(
   SetInitTiagoPose.srv
   GetSceneObjectList.srv
   loadKnowledge.srv
+  GotoObject.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -178,6 +179,10 @@ target_link_libraries(reasoning_node  ${catkin_LIBRARIES})
 add_executable(knowledge_node src/knowledge_node.cpp)
 add_dependencies(knowledge_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(knowledge_node  ${catkin_LIBRARIES})
+
+add_executable(tiago_control_node src/tiago_control_node.cpp)
+add_dependencies(tiago_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(tiago_control_node  ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
