@@ -94,7 +94,22 @@ getClassPath(Class, Class_path):-
 %					Class='Orange'  <- make sure this class exist in the ontology "ssy236Ontology"
 
 % TODO: Properly define this predicate to check if  class already exists in the ontology ssy236Ontology. If the class does not exist, we need to assert a new one, otherwise nothing will happen.
-get_class(Class):-
-	write('New class created: '), write(Class), nl.
+get_class(Class) :-
+    % Define the ontology prefix
+    OntologyPrefix = 'http://www.chalmers.se/ontologies/ssy236Ontology.owl#',
+    
+    % Construct the full class URI
+    atom_concat(OntologyPrefix, Class, FullClassPath),
+    
+    % Check if the class exists in the ontology
+    (   rdf_has(FullClassPath, rdf:type, owl:'Class')
+    ->  % If the class exists, do nothing
+		(fail)
+    ;   % If the class does not exist, create it
+        (   rdf_assert(FullClassPath, rdf:type, owl:'Class'),
+            write('New class created: '), write(FullClassPath), nl
+        )
+    ).
+
 
 

@@ -67,6 +67,7 @@ add_service_files(
   UpdateObjectList.srv
   SetInitTiagoPose.srv
   GetSceneObjectList.srv
+  loadKnowledge.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -173,6 +174,10 @@ target_link_libraries(map_generator_node ${catkin_LIBRARIES}  ${roscpp_LIBRARIES
 add_executable(reasoning_node src/reasoning_node.cpp)
 add_dependencies(reasoning_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(reasoning_node  ${catkin_LIBRARIES})
+
+add_executable(knowledge_node src/knowledge_node.cpp)
+add_dependencies(knowledge_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(knowledge_node  ${catkin_LIBRARIES})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

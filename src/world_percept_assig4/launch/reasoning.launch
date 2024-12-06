@@ -5,4 +5,8 @@
   <param name="initial_package" type="string" value="world_percept_assig4" />
   <node name="rosprolog" pkg="rosprolog" type="rosprolog_node" output="screen"/>
 
+
+  <rosparam command="load" file="$(find world_percept_assig4)/config/loadKnowledge.yaml"/>
+
+
 </launch>
