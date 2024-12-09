@@ -1,6 +1,7 @@
 #include "ros/ros.h"
 #include <sstream>
 #include <eigen3/Eigen/Dense>
+#include <vector>
 
 #include <tf/transform_broadcaster.h>
 #include <tf2_ros/transform_broadcaster.h>
@@ -14,6 +15,41 @@
 #include <world_percept_assig4/GotoObject.h>
 
 using namespace std;
+
+struct TrajectoryPoint {
+    Eigen::Vector2d position;
+    Eigen::Vector2d velocity;
+    Eigen::Vector2d acceleration;
+    double time;
+};
+
+std::pair<std::vector<double>, std::vector<double>> generateTrajectory2D(const TrajectoryPoint& start, const TrajectoryPoint& end) {
+    Eigen::MatrixXd A(6, 6);
+    Eigen::VectorXd bx(6);
+    Eigen::VectorXd by(6);
+    
+    // Populate the system of equations for a 5th-order polynomial
+    A << 1, start.time, pow(start.time, 2), pow(start.time, 3), pow(start.time, 4), pow(start.time, 5),
+         1, end.time, pow(end.time, 2), pow(end.time, 3), pow(end.time, 4), pow(end.time, 5),
+         0, 1, 2 * start.time, 3 * pow(start.time, 2), 4 * pow(start.time, 3), 5 * pow(start.time, 4),
+         0, 1, 2 * end.time, 3 * pow(end.time, 2), 4 * pow(end.time, 3), 5 * pow(end.time, 4),
+         0, 0, 2, 6 * start.time, 12 * pow(start.time, 2), 20 * pow(start.time, 3),
+         0, 0, 2, 6 * end.time, 12 * pow(end.time, 2), 20 * pow(end.time, 3);
+    
+    bx << start.position.x(), end.position.x(), start.velocity.x(), 
+         end.velocity.x(), start.acceleration.x(), end.acceleration.x();
+
+    by << start.position.y(), end.position.y(), start.velocity.y(), 
+         end.velocity.y(), start.acceleration.y(), end.acceleration.y();
+
+    // Solve for coefficients
+    Eigen::VectorXd coeffs_x = A.colPivHouseholderQr().solve(bx);
+    Eigen::VectorXd coeffs_y = A.colPivHouseholderQr().solve(by);
+    return {
+        std::vector<double>(coeffs_x.data(), coeffs_x.data() + coeffs_x.size()),
+        std::vector<double>(coeffs_y.data(), coeffs_y.data() + coeffs_y.size())
+    };
+}
 
 class Tiagocontrol
 {
@@ -143,6 +179,26 @@ private:
         velocity_publisher_.publish(tiago_twist_cmd);
         ROS_INFO_STREAM("Publishing velocity command: " << tiago_twist_cmd);
 
+        // Define trajectory points for example
+        TrajectoryPoint start = {{tiago_w[0], tiago_w[1]}, {0.0, 0.0}, {0.0, 0.0}, 0.0};
+        TrajectoryPoint end = {{target_w[0], target_w[1]}, {0.0, 0.0}, {0.0, 0.0}, 2.0};
+
+        // Generate trajectory
+        auto coeffs = generateTrajectory2D(start, end);
+        ROS_INFO_STREAM("Generated Trajectory Coefficients:");
+        // Iterate over the x-coefficients
+        ROS_INFO_STREAM("X Coefficients:");
+        for (size_t i = 0; i < coeffs.first.size(); ++i) {
+            ROS_INFO_STREAM("Coeff_x " << i << ": " << coeffs.first[i]);
+        }
+
+        // Iterate over the y-coefficients
+        ROS_INFO_STREAM("Y Coefficients:");
+        for (size_t i = 0; i < coeffs.second.size(); ++i) {
+            ROS_INFO_STREAM("Coeff_y " << i << ": " << coeffs.second[i]);
+        }
+
+
     }
 
     Eigen::Matrix2d q2Rot2D(const geometry_msgs::Quaternion &quaternion)
@@ -151,7 +207,6 @@ private:
         Eigen::Matrix2d rotationMatrix = eigenQuaternion.toRotationMatrix().block(0,0,2,2);
         return rotationMatrix;
     }
-
 
 }; 
 
