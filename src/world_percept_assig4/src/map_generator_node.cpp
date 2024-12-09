@@ -73,6 +73,7 @@ bool srv_update_callback(world_percept_assig4::UpdateObjectList::Request  &req,
     //Push the information that is obtained from the client via the request variables
     //TODO: Use the correct variables here 
     map_objs_.push_back(std::make_pair(req.object_name, req.object_pose)); 
+    name2id[req.object_name] = map_objs_.size()-1;
 
     for (size_t i = 0; i < map_objs_.size(); i++)
     {
