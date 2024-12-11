@@ -19,10 +19,12 @@ private:
     int ID_;
 
     std::string srv_assert_knowledge_name_;
-    ros::ServiceServer assert_knowledge_srv_;                            // Advertise service to assert knowledge in the ontology
+    ros::ServiceServer assert_knowledge_srv_; // Advertise service to assert knowledge in the ontology
 
     //Variable to save our preference to save or not the asserted queries
     bool m_query_flag_save;
+    std::ofstream file;  
+    
 public:
 
     Reasoner(ros::NodeHandle &nh)
@@ -47,25 +49,18 @@ public:
    //TODO A04.T02: This function should open a file if the path of the file is found, otherwise it should print out that the file or directory were not found (1 pt)
     void setOutQueriesFile(string QueryfileName)
     {
-
-        std::ofstream outfile;
-
-        // Attempt to open the file
-        outfile.open(QueryfileName, std::ios::out);
-
-        if (outfile.is_open())
-        {
+    
+        file = std::ofstream(QueryfileName, ios::out | ios::app);
+        
+        if (!file.is_open()) {                 
+            ROS_ERROR_STREAM("File not found: " << QueryfileName);
+        } else {
+            
             this->m_query_flag_save = true; 
-            ROS_INFO_STREAM("Output file successfully opened: " << QueryfileName);
-        }
-        else
-        {
-            // File could not be opened
-            this->m_query_flag_save = false;
-            ROS_ERROR_STREAM("File or directory not found: " << QueryfileName);
         }
 
-    }
+        this->m_query_flag_save = true;
+    }   
 
 private:    
 
@@ -88,27 +83,25 @@ private:
         res.confirmation = false;
 
         getClass(object);
-        if (assertKnowledge(object)) {
-            ROS_INFO_STREAM("Successfully asserted knowledge for object: " << object);
-            res.confirmation = true;
-        } else {
-            ROS_ERROR_STREAM("Failed to assert knowledge for object: " << object);
-            res.confirmation = false;
-        }
+        res.confirmation = assertKnowledge(object);
 
         return res.confirmation;
     }
 
 
-    void getClass(std::string className)
+    bool getClass(std::string className)
     {
         
         // TODO: Save the query you want to ask Prolog into the variable "query", this variable is the prolog predicate that we define in the file "instance_utils"
-        std:string query= "instance_utils:get_class(ssy236Ontology:'" + className + "')";
+        std:string query= "get_class('" + className + "')";
 
         ROS_INFO_STREAM("query: "<<query);
 
         PrologQuery bdgs = pl_.query(query);
+            
+          if(m_query_flag_save){
+            file << query << endl;
+        }
 
         bool res = false;
         for (auto &it : bdgs) 
@@ -117,7 +110,7 @@ private:
             ROS_INFO_STREAM("A new class was created in the ontology");
             break;
         }
-
+        return res;
        
     }
 
@@ -126,19 +119,23 @@ private:
         std::string instanceName;
 
         // TODO: Save the query you want to ask Prolog into the variable "query", this variable is the prolog predicate that we define in the file "instance_utils" 
-        std:string query= "instance_utils:create_instance_from_class(ssy236Ontology:'" + className + "', 'instance_id', Instance)";
+        std::string query = "create_instance_from_class('"     + className +     "', '"       + std::to_string(ID_++)+ "', Instance)";
 
         ROS_INFO_STREAM("query: "<<query);
 
         PrologQuery bdgs = pl_.query(query);
+          if(m_query_flag_save){
+            file << query << endl;
+        }
 
         for(PrologQuery::iterator it=bdgs.begin(); it != bdgs.end(); it++)
         {
             for (auto val : *it)
             {
                 //TODO: Retrive the value from Prolog
-                instanceName = val.first;
+                instanceName = className + std::to_string(ID_-1);
                 ROS_WARN_STREAM("new instance in knowledge base: "<<instanceName);
+                break;
             }
             
         }

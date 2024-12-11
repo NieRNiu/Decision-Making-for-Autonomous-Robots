@@ -2,6 +2,7 @@
 #include <sstream>
 #include <eigen3/Eigen/Dense>
 #include <vector>
+#include <visualization_msgs/Marker.h>
 
 #include <tf/transform_broadcaster.h>
 #include <tf2_ros/transform_broadcaster.h>
@@ -61,6 +62,7 @@ private:
 
     // Publisher that will send the twist information of the robot
     ros::Publisher velocity_publisher_;
+    ros::Publisher marker_publisher_;
 
     // Client that will be inside the callback function of the subscriber
     std::string srv_get_scene_name_; 
@@ -85,6 +87,7 @@ public:
 
         // Create Publisher
         velocity_publisher_ = nh.advertise<geometry_msgs::Twist>("/key_vel", 100);
+        marker_publisher_ = nh.advertise<visualization_msgs::Marker>("visualization_marker", 10);
 
         // Create client
         srv_get_scene_name_ = "get_scene_object_list";
@@ -138,6 +141,36 @@ private:
         return res.confirmation;
 
     }
+    
+    void visualizeTrajectory(const std::pair<std::vector<double>, std::vector<double>>& coeffs, 
+                            double start_time, double end_time, double step) {
+        visualization_msgs::Marker line_strip;
+        line_strip.header.frame_id = "world";
+        line_strip.header.stamp = ros::Time::now();
+        line_strip.ns = "trajectory";
+        line_strip.id = 0;
+        line_strip.type = visualization_msgs::Marker::LINE_STRIP;
+        line_strip.action = visualization_msgs::Marker::ADD;
+
+        line_strip.scale.x = 0.02; // Line width
+        line_strip.color.b = 1.0; // Blue color
+        line_strip.color.a = 1.0;
+
+        for (double t = start_time; t <= end_time; t += step) {
+            double x = coeffs.first[0] + coeffs.first[1] * t + coeffs.first[2] * pow(t, 2) +
+                        coeffs.first[3] * pow(t, 3) + coeffs.first[4] * pow(t, 4) + coeffs.first[5] * pow(t, 5);
+            double y = coeffs.second[0] + coeffs.second[1] * t + coeffs.second[2] * pow(t, 2) +
+                        coeffs.second[3] * pow(t, 3) + coeffs.second[4] * pow(t, 4) + coeffs.second[5] * pow(t, 5);
+            
+            geometry_msgs::Point point;
+            point.x = x;
+            point.y = y;
+            point.z = 0.0; // Keep it on the ground plane
+            line_strip.points.push_back(point);
+        }
+
+        marker_publisher_.publish(line_strip);
+    }
 
     void subscriber_callback(const gazebo_msgs::ModelStates::ConstPtr& msg)
     {
@@ -185,6 +218,7 @@ private:
 
         // Generate trajectory
         auto coeffs = generateTrajectory2D(start, end);
+        visualizeTrajectory(coeffs, start.time, end.time, 0.1);
         ROS_INFO_STREAM("Generated Trajectory Coefficients:");
         // Iterate over the x-coefficients
         ROS_INFO_STREAM("X Coefficients:");

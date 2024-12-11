@@ -1,35 +1,50 @@
 # world_percept_assig4
 
-Please provide a ReadMe file with the instructions you use to run your solutions
+# Team8: Xinzhu Niu, Dian Wang
 
-For example:
 
-To run this package, do:
+To run this package, please run the following commands:
 
 First indicate where the new gazebo world is located:
 
-In the docker container do:
+`export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/user/exchange/SSY236_group8/src/world_percept_assig4/  `
 
-`export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/user/exchange/ssy236_karinne/src/world_percept_assig4/  `
+`source /home/user/exchange/SSY236_group8/devel/setup.bash`
 
-`source /home/user/exchange/ssy236_karinne/devel/setup.bash`
+Step 1:
+`roslaunch world_percept_assig4 reasoning.launch`
 
+Step 2:
 `roslaunch world_percept_assig4 gazebo_ssy236.launch`
 
-Task 1:
+Step 3:
+rosrun world_percept_assig4 reasoning_node ./src/world_percept_assig4/config
 
-Run the XXX node
+Step 4:
+rosrun world_percept_assig4 knowledge_node ./src/world_percept_assig4/config
 
-`rosrun world_percept_assig4 XX_node`
+Step 5:
+Run the map generator node
+`rosrun world_percept_assig4 map_generator_node`
 
-Task 2:
-
-Run the client node
-
+Step 6:
+Run the percept node
 `rosrun world_percept_assig4 percept_node`
 
-Task 3:
+Step 7:
+Launch the key_teleop node
+`roslaunch rosrun key_teleop key_teleop.py `
 
-Launch the service node
+Step 8:
+Navigate around in the Gazebo environemnt to collect the position of all the objects.
+You can see class and instances have been saved into the "savedQueries" file.
 
-`roslaunch world_percept_assig4 XXX_node`
+Step 9:
+Launch the tiago control node
+`roslaunch world_percept_assig4 tiago_control_node`
+
+Step 10:
+Navigate to the targeted object using a service call
+for example: `rosservice call /goto_object "{obj: "bookshelf"}"`
+And you can see the robot navigate to the object, together with the trajectory in the Rviz Environment. (Remember to add "Marker" and select topic to be "visualization_marker")
+

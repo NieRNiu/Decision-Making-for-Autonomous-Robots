@@ -22,6 +22,9 @@ private:
 
     ros::ServiceClient client_map_generator_; ///< Client to request the object list update in the map generator node
 
+    std::string srv_assert_knowledge_name_; 
+    std::vector<std::string> v_seen_obj_resoning_;  
+    ros::ServiceClient client_reasoning_; 
 public:
 
     WorldInfo(ros::NodeHandle& nh)
@@ -32,10 +35,15 @@ public:
         v_seen_obj_.push_back("tiago");
         v_seen_obj_.push_back("ground_plane");
 
+        v_seen_obj_resoning_.push_back("tiago");
+        v_seen_obj_resoning_.push_back("ground_plane");
+
         subs_topic_name_="/gazebo/model_states";
 
         // create client and wait until service is advertised
         srv_update_obj_name_="update_object_list";
+        srv_assert_knowledge_name_ = "assert_knowledge";
+
         client_map_generator_ = nh.serviceClient<world_percept_assig4::UpdateObjectList>(srv_update_obj_name_);
 
         // Wait for the service to be advertised
@@ -53,7 +61,16 @@ public:
         // Create subscriber to receive the commanded turtle state. This state will be generated from a trajectory generator
         sub_gazebo_data_ = nh.subscribe(subs_topic_name_, 100, &WorldInfo::topic_callback, this);
 
-    
+        client_reasoning_ = nh.serviceClient<world_percept_assig4::UpdateObjectList>(srv_assert_knowledge_name_);
+        // Wait for the service to be advertised
+        ROS_INFO("Waiting for service %s to be advertised...", srv_assert_knowledge_name_.c_str());
+        bool service_found2 = ros::service::waitForService(srv_assert_knowledge_name_, ros::Duration(30.0)); // You can adjust the timeout as needed
+        if(!service_found2)
+        {
+            ROS_ERROR("Failed to call service %s", srv_assert_knowledge_name_.c_str());
+            exit;
+        }
+        ROS_INFO_STREAM("Connected to service: "<<srv_assert_knowledge_name_);
     
     };
 
@@ -136,6 +153,27 @@ private:
                 {
                     ROS_ERROR_STREAM("Failed to call service "<<srv_update_obj_name_);
                 }
+
+                auto it2 = std::find(v_seen_obj_resoning_.begin(), v_seen_obj_resoning_.end(), s);
+                if (it2 == v_seen_obj_resoning_.end()) {
+
+                    world_percept_assig4::UpdateObjectList srv2;
+                    srv2.request.object_name=s;
+                    srv2.request.object_pose= obj_pose;
+                    if (client_reasoning_.call(srv2))
+                    {
+                        ROS_INFO_STREAM("Resoning List Updated?: "<< (int)srv2.response.confirmation);
+                        if(srv2.response.confirmation)
+                        {
+                            v_seen_obj_resoning_.push_back(s);
+                            ROS_INFO_STREAM("Object ["<<s<<"] added to the list");
+                        }
+                    }
+                    else
+                    {
+                        ROS_ERROR_STREAM("Failed to call service "<<srv_assert_knowledge_name_);
+                    }
+
             }
 
         } //if d
@@ -149,7 +187,7 @@ private:
     
   } // callback
 
-    
+  }
 
 }; // Class 
 

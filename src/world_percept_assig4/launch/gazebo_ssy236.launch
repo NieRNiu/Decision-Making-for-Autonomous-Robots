@@ -26,16 +26,16 @@
   
     <!-- Launch Rviz -->
     <!-- To launch rviz and visualize the robot and its sensors, uncomment the below line-->
-   <!--
+  
    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tiago_gazebo)/config/tiago.rviz"/>
-   -->
+   
 
   <!-- Launch TF -->
 <!--
    TODO- You need to create a static transformation between /odom and /world so they are the same. You can look at the below line to see an example.
    -->
-    <!--
+  
   <node pkg="tf" type="static_transform_publisher" name="StaticTransformation" args="0 0 0 0 0 0 /odom /world 100"/>
--->
+
 
 </launch>
