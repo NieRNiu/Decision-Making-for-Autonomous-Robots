@@ -1,0 +1,14 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/student/ros/workspaces/SSY236_group8/devel/lib/python3/dist-packages",
+        "/home/student/ros/workspaces/knowrob_noetic/devel/lib/python3/dist-packages",
+        "/home/student/ros/workspaces/tiago_public_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/student/ros/workspaces/SSY236_group8/devel/lib/python3/dist-packages",
+        "/home/student/ros/workspaces/knowrob_noetic/devel/lib/python3/dist-packages",
+        "/home/student/ros/workspaces/tiago_public_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

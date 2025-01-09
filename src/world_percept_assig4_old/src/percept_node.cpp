@@ -7,8 +7,8 @@
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
 #include <gazebo_msgs/ModelStates.h>
-#include <final_project/UpdateObjectList.h>
-#include <final_project/SetInitTiagoPose.h>
+#include <world_percept_assig4/UpdateObjectList.h>
+#include <world_percept_assig4/SetInitTiagoPose.h>
 
 class WorldInfo
 {
