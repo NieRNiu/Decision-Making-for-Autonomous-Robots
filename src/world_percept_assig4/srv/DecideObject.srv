@@ -1,0 +1,8 @@
+string taste_preference     
+bool prefers_alcohol        
+string budget       
+string gender 
+int8 age       
+---
+string selected_object      
+bool success                

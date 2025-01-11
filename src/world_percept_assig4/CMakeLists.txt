@@ -22,7 +22,15 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
+find_package(Python3 REQUIRED)
+include_directories(${Python3_INCLUDE_DIRS})
+link_directories(${Python3_LIBRARY_DIRS})
+include_directories(/usr/include/python3.8)
+
+
+
+
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -69,6 +77,7 @@ add_service_files(
   GetSceneObjectList.srv
   loadKnowledge.srv
   GotoObject.srv
+  DecideObject.srv
 )
 
 ## Generate actions in the 'action' folder

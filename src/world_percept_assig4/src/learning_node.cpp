@@ -11,7 +11,8 @@
 //add the new libraries for the new service
 #include <world_percept_assig4/GetSceneObjectList.h>
 #include <gazebo_msgs/ModelStates.h>
-
+#include <world_percept_assig4/DecideObject.h>
+#include <boost/python.hpp>
 
 class LearningNode 
 {
@@ -33,6 +34,10 @@ private:
     std::string srv_assert_knowledge_name_; 
     std::vector<std::string> v_seen_obj_resoning_;  
     ros::ServiceClient client_reasoning_; 
+
+    ros::ServiceServer decide_object_srv_; // Service for deciding which object to choose
+    std::string srv_decide_object_name_;  ///< Name of the decision-making service
+
 
 public:
 
@@ -65,7 +70,10 @@ public:
             exit;
         }
         ROS_INFO_STREAM("Connected to service: "<<srv_assert_knowledge_name_);
-
+        
+        srv_decide_object_name_ = "decide_object";
+        decide_object_srv_ = nh.advertiseService(srv_decide_object_name_, &LearningNode::srv_decide_object_callback, this);
+        ROS_INFO("Decision-making service [%s] initialized.", srv_decide_object_name_.c_str());
     }
 
     ~LearningNode() 
@@ -165,6 +173,49 @@ bool srv_update_callback(world_percept_assig4::UpdateObjectList::Request  &req,
         return res.obj_found;
     }
 
+    bool srv_decide_object_callback(world_percept_assig4::DecideObject::Request &req,
+                                       world_percept_assig4::DecideObject::Response &res)
+    {
+        ROS_INFO("Received decision request with conditions:");
+        ROS_INFO("Taste Preference: %s", req.taste_preference.c_str());
+        ROS_INFO("Prefers Alcohol: %s", req.prefers_alcohol ? "Yes" : "No");
+        ROS_INFO("Budget: %s", req.budget.c_str());
+        ROS_INFO("Gender: %s", req.gender.c_str());
+        ROS_INFO("Age: %d", req.age);
+
+        // 构造命令行字符串，调用 Python 脚本并传递参数
+        std::string command = "python3 /home/user/exchange/SSY236_group8/src/world_percept_assig4/src/decision_tree_predict.py '" + req.taste_preference + "' " + 
+                              std::to_string(req.prefers_alcohol) + " '" + req.budget + "' '" + 
+                              req.gender + "' " + std::to_string(req.age);
+        
+        // 获取 Python 脚本输出
+        std::string result = exec(command.c_str());
+
+        res.selected_object = result;
+        res.success = true;
+        ROS_INFO("Decision made: %s", res.selected_object.c_str());
+
+        return true;
+    }
+
+    // Function to execute a system command and return the result as a string
+    std::string exec(const char* cmd) {
+        char buffer[128];
+        std::string result = "";
+        ROS_INFO_STREAM("Executing command: " << cmd);  // 打印命令以调试
+        FILE* fp = popen(cmd, "r");
+        if (fp == nullptr) {
+            ROS_ERROR("Failed to run command");
+            return "";
+        }
+        while (fgets(buffer, sizeof(buffer), fp) != nullptr) {
+            result += buffer;
+        }
+        fclose(fp);
+        ROS_INFO_STREAM("Python script output: " << result);  // 打印输出以调试
+        return result;
+    }
+
 
 
 void tf_timer_callback(const ros::TimerEvent& e)
@@ -220,6 +271,7 @@ int main(int argc, char** argv) {
 
     LearningNode myLearningNode(nh);
 
+    ROS_INFO("LearningNode is running...");
     ros::spin();
 
     return 0;
