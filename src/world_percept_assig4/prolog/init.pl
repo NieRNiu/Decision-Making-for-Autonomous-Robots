@@ -4,7 +4,8 @@
 
 
 :- consult('instance_utils').
-
+:- consult('decision_utils').
+:- consult('reasoning_utils').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % parse OWL files, register name spaces

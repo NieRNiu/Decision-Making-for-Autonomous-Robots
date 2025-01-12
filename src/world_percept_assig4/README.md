@@ -7,15 +7,17 @@ To run this package, please run the following commands:
 
 First indicate where the new gazebo world is located:
 
-`export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/student/ros/workspaces/SSY236_group8/src/world_percept_assig4/`
+export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/student/ros/workspaces/SSY236_group8/src/world_percept_assig4/
 
-`source /home/student/ros/workspaces/SSY236_group8/devel/setup.bash`
+source /home/student/ros/workspaces/SSY236_group8/devel/setup.bash
 
 Step 1:
 `roslaunch world_percept_assig4 reasoning.launch`
 
 Step 2:
-`roslaunch world_percept_assig4 gazebo_ssy236.launch`
+roslaunch world_percept_assig4 gazebo_ssy236.launch
+roslaunch darknet_ros darknet_ros.launch
+
 
 Step 3:
 rosrun world_percept_assig4 reasoning_node ./src/world_percept_assig4/config

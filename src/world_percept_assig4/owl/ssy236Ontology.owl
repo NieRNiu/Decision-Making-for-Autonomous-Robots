@@ -7,7 +7,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl">
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Copyright © 2007-2011 by
+        <rdfs:comment>Copyright © 2007-2011 by
           Chalmers University of Technology. This work is licensed under
           CreativeCommons Attribution 3.0, so you are granted to use, copy,
           distribute, transmit and adapt this work, but you must attribute
@@ -47,7 +47,7 @@
     <owl:ObjectProperty rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractProperties">
         <rdfs:domain rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
         <rdfs:range rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This represent general properties that most object should have to describe objects in an abstract form.</rdfs:comment>
+        <rdfs:comment>This represent general properties that most object should have to describe objects in an abstract form.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -124,6 +124,16 @@
     
 
 
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColor -->
+
+    <owl:ObjectProperty rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColor">
+        <rdfs:subPropertyOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractProperties"/>
+        <rdfs:domain rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
+        <rdfs:range rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasCriteria -->
 
     <owl:ObjectProperty rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasCriteria">
@@ -170,6 +180,25 @@
         <rdfs:subPropertyOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#temporalProperties"/>
         <rdfs:domain rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TimePoint"/>
         <rdfs:range rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TimePoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#isNear -->
+
+    <owl:ObjectProperty rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#isNear">
+        <rdfs:subPropertyOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractProperties"/>
+        <rdfs:domain rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
+        <rdfs:range rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#isPickable -->
+
+    <owl:ObjectProperty rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#isPickable">
+        <rdfs:subPropertyOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractProperties"/>
+        <rdfs:domain rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
     </owl:ObjectProperty>
     
 
@@ -324,7 +353,7 @@
         <rdfs:subPropertyOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#temporalProperties"/>
         <rdfs:domain rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TemporalThing"/>
         <rdfs:range rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TimePoint"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Initial time when something was perceived</rdfs:comment>
+        <rdfs:comment>Initial time when something was perceived</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -1147,7 +1176,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Action">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Event"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of Events (q.v.) that are carried out by some &quot;doer&quot; (see doneBy). Instances of Action include any event in which one or more actors effect some change in the (tangible or intangible) state of the world, typically by an expenditure of effort or energy. Note that it is not required that any tangible object be moved, changed, produced, or destroyed for an action to occur;</rdfs:comment>
+        <rdfs:comment>The collection of Events (q.v.) that are carried out by some &quot;doer&quot; (see doneBy). Instances of Action include any event in which one or more actors effect some change in the (tangible or intangible) state of the world, typically by an expenditure of effort or energy. Note that it is not required that any tangible object be moved, changed, produced, or destroyed for an action to occur;</rdfs:comment>
     </owl:Class>
     
 
@@ -1164,7 +1193,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#AngularAccelerationEvent">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MovementRotation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of AngularAccelerationEvent is an event in which the primaryObjectMoving has a positive angular acceleration.</rdfs:comment>
+        <rdfs:comment>Each instance of AngularAccelerationEvent is an event in which the primaryObjectMoving has a positive angular acceleration.</rdfs:comment>
     </owl:Class>
     
 
@@ -1197,7 +1226,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Assembling">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MakingSomething"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A collection of events. In each Assembling event, physical objects are combined by fastening them together in some way to produce a new object.</rdfs:comment>
+        <rdfs:comment>A collection of events. In each Assembling event, physical objects are combined by fastening them together in some way to produce a new object.</rdfs:comment>
     </owl:Class>
     
 
@@ -1394,7 +1423,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Categorizing">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Task"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Synonym of sorting</rdfs:comment>
+        <rdfs:comment>Synonym of sorting</rdfs:comment>
     </owl:Class>
     
 
@@ -1411,7 +1440,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#CerealFood">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Food"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Each instance of CerealFood is food that consists of a significant amount of grain products, such as breads and cereals. </rdfs:comment>
+        <rdfs:comment> Each instance of CerealFood is food that consists of a significant amount of grain products, such as breads and cereals. </rdfs:comment>
     </owl:Class>
     
 
@@ -1469,7 +1498,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#CitrusFruit">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EdibleFruit"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of individual citrus fruits.</rdfs:comment>
+        <rdfs:comment>The collection of individual citrus fruits.</rdfs:comment>
     </owl:Class>
     
 
@@ -1550,7 +1579,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Configuration">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#StaticSituation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of Configuration is a static situation consisting of two or more PartiallyTangible things of certain types standing in a certain type of spatial relationship (or set of relationships). This (set of) spatial relationship(s) &quot;characterizes&quot; the Configuration&apos;s type in the sense that any group of objects of the appropriate types standing in that relationship (or those relationships) correspond to a Configuration of that type; and each of these objects, in turn, is said to be &quot;configured&quot; (see configuredObjects) in the (individual) Configuration.</rdfs:comment>
+        <rdfs:comment>Each instance of Configuration is a static situation consisting of two or more PartiallyTangible things of certain types standing in a certain type of spatial relationship (or set of relationships). This (set of) spatial relationship(s) &quot;characterizes&quot; the Configuration&apos;s type in the sense that any group of objects of the appropriate types standing in that relationship (or those relationships) correspond to a Configuration of that type; and each of these objects, in turn, is said to be &quot;configured&quot; (see configuredObjects) in the (individual) Configuration.</rdfs:comment>
     </owl:Class>
     
 
@@ -1559,7 +1588,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ConstrainedRotation">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MovementRotation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Movement_Rotation constrained by physical contact with a solid or liquid external object along an external or internal boundary of the rotating object. Physical contact between the rotating body and the external object continues during the rotation, although pairs of points of the two objects in contact may change. </rdfs:comment>
+        <rdfs:comment>Movement_Rotation constrained by physical contact with a solid or liquid external object along an external or internal boundary of the rotating object. Physical contact between the rotating body and the external object continues during the rotation, although pairs of points of the two objects in contact may change. </rdfs:comment>
     </owl:Class>
     
 
@@ -1569,7 +1598,7 @@
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Container">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EdibleStuff"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of tangible objects whose primary function is to contain something. Note that just about anything can serve as a container without actually being a container</rdfs:comment>
+        <rdfs:comment>The collection of tangible objects whose primary function is to contain something. Note that just about anything can serve as a container without actually being a container</rdfs:comment>
     </owl:Class>
     
 
@@ -1578,7 +1607,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ContainerArtifact">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Container"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of ContainerArtifact is an object whose primary function (or one of whose main functions) is to be a container. Instances of ContainerArtifact include storage containers for books, office records, food, clothing, tools, and materials; containers for transporting the same; passenger compartments of various kinds of vehicles; and artificial constructs for housing humans and animals.</rdfs:comment>
+        <rdfs:comment>Each instance of ContainerArtifact is an object whose primary function (or one of whose main functions) is to be a container. Instances of ContainerArtifact include storage containers for books, office records, food, clothing, tools, and materials; containers for transporting the same; passenger compartments of various kinds of vehicles; and artificial constructs for housing humans and animals.</rdfs:comment>
     </owl:Class>
     
 
@@ -1660,7 +1689,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#CreationOrDestructionEvent">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EventLocalized"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A specialization of Event_Localized. During each instance of CreationOrDestructionEvent, one or more instances of SomethingExisting (q.v.) come into or go out of existence. Specializations of this collection include CreationEvent, DestructionEvent, Manufacturing, MakingSomething, and KillingByOrganism.</rdfs:comment>
+        <rdfs:comment>A specialization of Event_Localized. During each instance of CreationOrDestructionEvent, one or more instances of SomethingExisting (q.v.) come into or go out of existence. Specializations of this collection include CreationEvent, DestructionEvent, Manufacturing, MakingSomething, and KillingByOrganism.</rdfs:comment>
     </owl:Class>
     
 
@@ -1670,7 +1699,7 @@
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Cuisine">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EdibleStuff"/>
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrinkOrIngredient"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of types of EdibleStuff that are commonly associated with a region, ethnic group, culture, etc.</rdfs:comment>
+        <rdfs:comment>The collection of types of EdibleStuff that are commonly associated with a region, ethnic group, culture, etc.</rdfs:comment>
     </owl:Class>
     
 
@@ -1833,7 +1862,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Drink">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrink"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of Drink is a portion of a liquid of a type that is ingestible and commonly consumed by humans or animals. Instances of Drink, unlike instances of Food (q.v.), are ingested by drinking without chewing.</rdfs:comment>
+        <rdfs:comment>Each instance of Drink is a portion of a liquid of a type that is ingestible and commonly consumed by humans or animals. Instances of Drink, unlike instances of Food (q.v.), are ingested by drinking without chewing.</rdfs:comment>
     </owl:Class>
     
 
@@ -1875,7 +1904,7 @@
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EdibleFruit">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FruitOrVegetableFood"/>
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Vegetable"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of individual edible fruits, often eaten whole by people or used in cooking. Note that this is the common-sense notion of fruit.</rdfs:comment>
+        <rdfs:comment>The collection of individual edible fruits, often eaten whole by people or used in cooking. Note that this is the common-sense notion of fruit.</rdfs:comment>
     </owl:Class>
     
 
@@ -1884,7 +1913,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EdibleStuff">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each specialization of EdibleStuff (Comestible) is a type of partially tangible stuff which all normal instances of some specialization of Organism_Whole can consume and successfully metabolize a significant portion of any instance of, with or without resulting harm to themselves. This collection includes virtually all animal and vegetable matter, as well as salts, potable water, and instances of OralDrug.</rdfs:comment>
+        <rdfs:comment>Each specialization of EdibleStuff (Comestible) is a type of partially tangible stuff which all normal instances of some specialization of Organism_Whole can consume and successfully metabolize a significant portion of any instance of, with or without resulting harm to themselves. This collection includes virtually all animal and vegetable matter, as well as salts, potable water, and instances of OralDrug.</rdfs:comment>
     </owl:Class>
     
 
@@ -1893,7 +1922,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ElapsedTime">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TimeInterval"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A sub-collection of TimeInterval. Each instance is the time that elapses while some event is occurring.</rdfs:comment>
+        <rdfs:comment>A sub-collection of TimeInterval. Each instance is the time that elapses while some event is occurring.</rdfs:comment>
     </owl:Class>
     
 
@@ -1934,7 +1963,7 @@
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Event">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Situation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Each instance of Event is a dynamic situation in which the state of the world changes; each instance is something one would say &quot;happens&quot;. Events are intangible because they are changes per se, not tangible objects that effect and undergo changes.
+        <rdfs:comment> Each instance of Event is a dynamic situation in which the state of the world changes; each instance is something one would say &quot;happens&quot;. Events are intangible because they are changes per se, not tangible objects that effect and undergo changes.
 Notable specializations of Event include Event_Localized, PhysicalEvent, Action, and GeneralizedTransfer.</rdfs:comment>
     </owl:Class>
     
@@ -1944,7 +1973,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EventLocalized">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Event"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Event_Localized is the collection of all events that occur at a specific location in space.</rdfs:comment>
+        <rdfs:comment>Event_Localized is the collection of all events that occur at a specific location in space.</rdfs:comment>
     </owl:Class>
     
 
@@ -1961,7 +1990,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Food">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrink"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of Food is a particular portion of food of a type which can be, and habitually is, eaten by humans or other animals. Here the notion of eating is important; eating an instance of Food will generally require biting or chewing, but if placed into the mouth (e.g. with a utensil) in a manner not considered to be drinking, it is still considered eating. Thus, edible stuff normally taken in via drinking, inhalation, or osmosis is excluded from this collection.</rdfs:comment>
+        <rdfs:comment>Each instance of Food is a particular portion of food of a type which can be, and habitually is, eaten by humans or other animals. Here the notion of eating is important; eating an instance of Food will generally require biting or chewing, but if placed into the mouth (e.g. with a utensil) in a manner not considered to be drinking, it is still considered eating. Thus, edible stuff normally taken in via drinking, inhalation, or osmosis is excluded from this collection.</rdfs:comment>
     </owl:Class>
     
 
@@ -1971,7 +2000,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodIngredientOnly">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrinkOrIngredient"/>
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrink"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of FoodIngredientOnly is an edible substance that is used in making other food but isn&apos;t eaten by itself. Instances of FoodIngredientOnly may or may not require some preparation. For example, TableSalt, VegetableOil, and Ketchup are specializations of FoodIngredientOnly, since all of their instances are used only as ingredients or condiments.</rdfs:comment>
+        <rdfs:comment>Each instance of FoodIngredientOnly is an edible substance that is used in making other food but isn&apos;t eaten by itself. Instances of FoodIngredientOnly may or may not require some preparation. For example, TableSalt, VegetableOil, and Ketchup are specializations of FoodIngredientOnly, since all of their instances are used only as ingredients or condiments.</rdfs:comment>
     </owl:Class>
     
 
@@ -1980,7 +2009,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrink">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrinkOrIngredient"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of FoodOrDrink is a substance which instances of some type of organism normally consume a significant part of. Important specializations of FoodOrDrink include Food (instances of which require chewing in order to be consumed) and Drink (instances of which are liquids that can be consumed without chewing).</rdfs:comment>
+        <rdfs:comment>Each instance of FoodOrDrink is a substance which instances of some type of organism normally consume a significant part of. Important specializations of FoodOrDrink include Food (instances of which require chewing in order to be consumed) and Drink (instances of which are liquids that can be consumed without chewing).</rdfs:comment>
     </owl:Class>
     
 
@@ -1989,7 +2018,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodOrDrinkOrIngredient">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#EdibleStuff"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of all food, drink and ingredients.</rdfs:comment>
+        <rdfs:comment>The collection of all food, drink and ingredients.</rdfs:comment>
     </owl:Class>
     
 
@@ -2015,7 +2044,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodVessel">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ContainerArtifact"/>
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FoodUtensil"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of FoodVessel is a portable container designed for holding, storing, or preparing food or drink. Specializations of FoodVessel include the collections CookingVessel, EatingVessel, and FoodStorageContainer.</rdfs:comment>
+        <rdfs:comment>Each instance of FoodVessel is a portable container designed for holding, storing, or preparing food or drink. Specializations of FoodVessel include the collections CookingVessel, EatingVessel, and FoodStorageContainer.</rdfs:comment>
     </owl:Class>
     
 
@@ -2056,7 +2085,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>All the instances of the class FruitorVegetableFood, have the data property &quot;hasSqueezeRatio&quot;</rdfs:comment>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of FruitOrVegetableFood is a fruit or a vegetable.</rdfs:comment>
+        <rdfs:comment>Each instance of FruitOrVegetableFood is a fruit or a vegetable.</rdfs:comment>
     </owl:Class>
     
 
@@ -2130,7 +2159,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#HandlingAnObject">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SensoryEvent"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of HandlingAnObject is an event in which an object (see SomethingExisting) is touched and manipulated by some Agent_PartiallyTangible. Specializations of this collection include ManipulatingWithFingers and HandlingADevice (qq.v.).</rdfs:comment>
+        <rdfs:comment>Each instance of HandlingAnObject is an event in which an object (see SomethingExisting) is touched and manipulated by some Agent_PartiallyTangible. Specializations of this collection include ManipulatingWithFingers and HandlingADevice (qq.v.).</rdfs:comment>
     </owl:Class>
     
 
@@ -2187,7 +2216,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#HumanActivity">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#IntelligentAgentActivity"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of HumanActivity is a spatially-localized action each of whose &quot;doers&quot; (see doneBy) is either a HomoSapiens or a group of humans.</rdfs:comment>
+        <rdfs:comment>Each instance of HumanActivity is a spatially-localized action each of whose &quot;doers&quot; (see doneBy) is either a HomoSapiens or a group of humans.</rdfs:comment>
     </owl:Class>
     
 
@@ -2212,7 +2241,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#IntelligentAgentActivity">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Action"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A specialization of Action (q.v.). Every instance of IntelligentAgentActivity is an action, each of whose &quot;doers&quot; (see doneBy and animateDoers) is either an IntelligentAgent or a group of such agents (i.e. a Group all of whose members are intelligent agents). Specializations of this collection include HumanActivity.</rdfs:comment>
+        <rdfs:comment>A specialization of Action (q.v.). Every instance of IntelligentAgentActivity is an action, each of whose &quot;doers&quot; (see doneBy and animateDoers) is either an IntelligentAgent or a group of such agents (i.e. a Group all of whose members are intelligent agents). Specializations of this collection include HumanActivity.</rdfs:comment>
     </owl:Class>
     
 
@@ -2369,7 +2398,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MakingSomething">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#CreationEvent"/>
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Task"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A collection of creation events. Each instance of this collection involves some PartiallyTangible thing being made (by some Agent_PartiallyTangible) from raw materials or from parts. The end result (see productsCreated) might or might not be a Product or even a completed artifact (it could be an intermediate form, or a component of a completed artifact).</rdfs:comment>
+        <rdfs:comment>A collection of creation events. Each instance of this collection involves some PartiallyTangible thing being made (by some Agent_PartiallyTangible) from raw materials or from parts. The end result (see productsCreated) might or might not be a Product or even a completed artifact (it could be an intermediate form, or a component of a completed artifact).</rdfs:comment>
     </owl:Class>
     
 
@@ -2511,7 +2540,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MovementEvent">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PhysicalEvent"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> This is the most general collection of physical movements. Each instance of MovementEvent is an event in which at least one object (see objectMoving) either translates some distance or moves from one rotational orientation to another, relative to a frame of reference that is not part of the translating/rotating object. The movement in question might be periodic or not, continuous or not. </rdfs:comment>
+        <rdfs:comment> This is the most general collection of physical movements. Each instance of MovementEvent is an event in which at least one object (see objectMoving) either translates some distance or moves from one rotational orientation to another, relative to a frame of reference that is not part of the translating/rotating object. The movement in question might be periodic or not, continuous or not. </rdfs:comment>
     </owl:Class>
     
 
@@ -2657,7 +2686,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Pepper">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Vegetable"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Peppers are botanically fruits, but are generally considered in culinary contexts to be vegetables.</rdfs:comment>
+        <rdfs:comment>Peppers are botanically fruits, but are generally considered in culinary contexts to be vegetables.</rdfs:comment>
     </owl:Class>
     
 
@@ -2674,7 +2703,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Perceiving">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SensoryEvent"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of Perceiving is an event in which an agent (an instance of PerceptualAgent) acquires information through the exercise of its senses.</rdfs:comment>
+        <rdfs:comment>Each instance of Perceiving is an event in which an agent (an instance of PerceptualAgent) acquires information through the exercise of its senses.</rdfs:comment>
     </owl:Class>
     
 
@@ -2756,7 +2785,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PostureConfiguration">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Configuration"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Each instance of Posture_Configuration is a Situation that consists of the body of an Animal being in a certain configuration or orientation (e.g., crouching or lying prone).</rdfs:comment>
+        <rdfs:comment> Each instance of Posture_Configuration is a Situation that consists of the body of an Animal being in a certain configuration or orientation (e.g., crouching or lying prone).</rdfs:comment>
     </owl:Class>
     
 
@@ -2790,7 +2819,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingABeverage">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingFoorOrDrink"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Making a batch of something drinkable</rdfs:comment>
+        <rdfs:comment>Making a batch of something drinkable</rdfs:comment>
     </owl:Class>
     
 
@@ -2799,7 +2828,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingAMeal">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingFoorOrDrink"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An event in which a meal is made. Since meals (which include snacks, cf Meal) can be made of merely a beverage, or merely a food, or several of both, PreparingAMeal has subEvents which can be either PreparingFood or PreparingABeverage.</rdfs:comment>
+        <rdfs:comment>An event in which a meal is made. Since meals (which include snacks, cf Meal) can be made of merely a beverage, or merely a food, or several of both, PreparingAMeal has subEvents which can be either PreparingFood or PreparingABeverage.</rdfs:comment>
     </owl:Class>
     
 
@@ -2808,7 +2837,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingFoodItem">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingFoorOrDrink"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Each instance of PreparingFoodItem is an event in which a single item of Food is prepared to make it ready to eat. For example, instances of MakingToast, roasting a turkey, or BakingBread.</rdfs:comment>
+        <rdfs:comment> Each instance of PreparingFoodItem is an event in which a single item of Food is prepared to make it ready to eat. For example, instances of MakingToast, roasting a turkey, or BakingBread.</rdfs:comment>
     </owl:Class>
     
 
@@ -2817,7 +2846,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PreparingFoorOrDrink">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MakingSomething"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of PreparingFoodOrDrink is an event in which an instance of FoodOrDrink is created. An instance of PreparingFoodOrDrink may be an event in which preparation is done `from scratch&apos;, using raw ingredients, or it may be an event in which semi-prepared or `convenience&apos; products (such as cake mixes, margarita mixes, or frozen foods) are used.</rdfs:comment>
+        <rdfs:comment>Each instance of PreparingFoodOrDrink is an event in which an instance of FoodOrDrink is created. An instance of PreparingFoodOrDrink may be an event in which preparation is done `from scratch&apos;, using raw ingredients, or it may be an event in which semi-prepared or `convenience&apos; products (such as cake mixes, margarita mixes, or frozen foods) are used.</rdfs:comment>
     </owl:Class>
     
 
@@ -2834,7 +2863,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#PurposefulAction">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Action"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of PurposefulAction is an action consciously, volitionally, and purposefully done by (see performedBy) at least one actor.</rdfs:comment>
+        <rdfs:comment>Each instance of PurposefulAction is an action consciously, volitionally, and purposefully done by (see performedBy) at least one actor.</rdfs:comment>
     </owl:Class>
     
 
@@ -2844,7 +2873,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#RefrigeratedStorageDevice">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#WhiteGoods"/>
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#StorageDevice"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The collection of electrical devices whose purpose is to maintain something at a lower temperature than the surroundings through refrigeration (usually through the compression/decompression of a gas).</rdfs:comment>
+        <rdfs:comment>The collection of electrical devices whose purpose is to maintain something at a lower temperature than the surroundings through refrigeration (usually through the compression/decompression of a gas).</rdfs:comment>
     </owl:Class>
     
 
@@ -2894,7 +2923,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#RotationTranslationCombined">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#MovementRotation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Combined translational and rotational movement</rdfs:comment>
+        <rdfs:comment>Combined translational and rotational movement</rdfs:comment>
     </owl:Class>
     
 
@@ -2943,7 +2972,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SensoryEvent">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#CreationEvent"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A collection of events. Each element of SensoryEvent is an event which elicits a direct sensory response from either its performer or its objectActedOn, when those predicates link the event to an instance of PerceptualAgent. Examples include the elements of VoluntaryBodyMovement (such as leg and arm movements), PhysicalContactEvent (such as touches), HumidityPerception, TemperatureChangingProcess, etc., when there is a PerceptualAgent linked to those events in the appropriate way.</rdfs:comment>
+        <rdfs:comment>A collection of events. Each element of SensoryEvent is an event which elicits a direct sensory response from either its performer or its objectActedOn, when those predicates link the event to an instance of PerceptualAgent. Examples include the elements of VoluntaryBodyMovement (such as leg and arm movements), PhysicalContactEvent (such as touches), HumidityPerception, TemperatureChangingProcess, etc., when there is a PerceptualAgent linked to those events in the appropriate way.</rdfs:comment>
     </owl:Class>
     
 
@@ -2977,7 +3006,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Situation">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TemporalThing"/>
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TimeInterval"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Each instance of Situation is a state or event consisting of one or more objects having certain properties or bearing certain relations to each other. Notable specializations of Situation are Event and StaticSituation; it is disjoint with SomethingExisting.</rdfs:comment>
+        <rdfs:comment> Each instance of Situation is a state or event consisting of one or more objects having certain properties or bearing certain relations to each other. Notable specializations of Situation are Event and StaticSituation; it is disjoint with SomethingExisting.</rdfs:comment>
     </owl:Class>
     
 
@@ -2994,7 +3023,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing">
         <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TemporalThing"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A specialization of Individual. The collection of all things that have a spatial extent or location relative to some other SpatialThing or in some embedding space. Note that to say that an entity is a member of this collection is to remain agnostic about two issues. First, a SpatialThing may be PartiallyTangible (e.g. Texas_State) or wholly Intangible (e.g. ArcticCircle or a line mentioned in a geometric theorem). Second, although we do insist on location relative to another spatial thing or in some embedding space, a SpatialThing might or might not be located in the actual physical universe. It is far from clear that all SpatialThings are so located: an ideal platonic circle or a trajectory through the phase space of some physical system (e.g.) might not be.</rdfs:comment>
+        <rdfs:comment>A specialization of Individual. The collection of all things that have a spatial extent or location relative to some other SpatialThing or in some embedding space. Note that to say that an entity is a member of this collection is to remain agnostic about two issues. First, a SpatialThing may be PartiallyTangible (e.g. Texas_State) or wholly Intangible (e.g. ArcticCircle or a line mentioned in a geometric theorem). Second, although we do insist on location relative to another spatial thing or in some embedding space, a SpatialThing might or might not be located in the actual physical universe. It is far from clear that all SpatialThings are so located: an ideal platonic circle or a trajectory through the phase space of some physical system (e.g.) might not be.</rdfs:comment>
     </owl:Class>
     
 
@@ -3052,7 +3081,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#StaticSituation">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Situation"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of StaticSituation is a state of affairs between two or more things, persisting statically over some time interval. Instances of StaticSituation always have a temporal extent, and they usually have a tangible and spatial extent.</rdfs:comment>
+        <rdfs:comment>Each instance of StaticSituation is a state of affairs between two or more things, persisting statically over some time interval. Instances of StaticSituation always have a temporal extent, and they usually have a tangible and spatial extent.</rdfs:comment>
     </owl:Class>
     
 
@@ -3069,7 +3098,7 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#StorageDevice">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ContainerArtifact"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of StorageConstruct is a container used primarily for storing something and includes such things as closets, trunks of cars, and attics. Negative examples would be Sink, Sandbox, and SewerLine, since their primary purpose is something other than storing something.</rdfs:comment>
+        <rdfs:comment>Each instance of StorageConstruct is a container used primarily for storing something and includes such things as closets, trunks of cars, and attics. Negative examples would be Sink, Sandbox, and SewerLine, since their primary purpose is something other than storing something.</rdfs:comment>
     </owl:Class>
     
 
@@ -3142,7 +3171,8 @@ Notable specializations of Event include Event_Localized, PhysicalEvent, Action,
     <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#TemporalThing -->
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TemporalThing">
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A specialization of Individual. This is the collection of all things that have temporal extent or location -- things about which one might sensibly ask &quot;When?&quot;. TemporalThing thus contains many kinds of things, including events, physical objects, agreements, and pure intervals of time. Major specializations of this collection are SomethingExisting, Situation, and TimeInterval (qq.v.).
+        <owl:disjointWith rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+        <rdfs:comment>A specialization of Individual. This is the collection of all things that have temporal extent or location -- things about which one might sensibly ask &quot;When?&quot;. TemporalThing thus contains many kinds of things, including events, physical objects, agreements, and pure intervals of time. Major specializations of this collection are SomethingExisting, Situation, and TimeInterval (qq.v.).
 Things that are timeless -- such as mathematical sets, Collections, and numbers -- are of course not instances of TemporalThing</rdfs:comment>
     </owl:Class>
     
@@ -3152,7 +3182,7 @@ Things that are timeless -- such as mathematical sets, Collections, and numbers 
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ThingTypeShape">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#SpatialThing"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of SpatialThingTypeByShape is a subcollection of SpatialThing (q.v.) whose own instances are all and only those things, either tangible or intangible, that have some particular thing in common as regards their shape.</rdfs:comment>
+        <rdfs:comment>Each instance of SpatialThingTypeByShape is a subcollection of SpatialThing (q.v.) whose own instances are all and only those things, either tangible or intangible, that have some particular thing in common as regards their shape.</rdfs:comment>
     </owl:Class>
     
 
@@ -3161,7 +3191,7 @@ Things that are timeless -- such as mathematical sets, Collections, and numbers 
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TimeInterval">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#TemporalThing"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of TimeInterval is an intangible temporal thing that is characterized fully by its temporal extent.</rdfs:comment>
+        <rdfs:comment>Each instance of TimeInterval is an intangible temporal thing that is characterized fully by its temporal extent.</rdfs:comment>
     </owl:Class>
     
 
@@ -3269,7 +3299,7 @@ Things that are timeless -- such as mathematical sets, Collections, and numbers 
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Vegetable">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#FruitOrVegetableFood"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Each instance of Vegetable_Food is a foodstuff which is derived from a plant and is ordinarily considered a vegetable; e.g., a carrot (an instance of Carrot_Foodstuff), a potato (an instance of Potato_Foodstuff), a lima bean (an instance of Bean_Foodstuff), or a tomato (an instance of Tomato_Foodstuff). Note that Vegetable_Food includes certain plant parts, such as tomatoes, that are technically classified as fruits by botanists, but which are treated as vegetables in food classification.</rdfs:comment>
+        <rdfs:comment>Each instance of Vegetable_Food is a foodstuff which is derived from a plant and is ordinarily considered a vegetable; e.g., a carrot (an instance of Carrot_Foodstuff), a potato (an instance of Potato_Foodstuff), a lima bean (an instance of Bean_Foodstuff), or a tomato (an instance of Tomato_Foodstuff). Note that Vegetable_Food includes certain plant parts, such as tomatoes, that are technically classified as fruits by botanists, but which are treated as vegetables in food classification.</rdfs:comment>
     </owl:Class>
     
 
@@ -3310,7 +3340,7 @@ Things that are timeless -- such as mathematical sets, Collections, and numbers 
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Wedge">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#ThingTypeShape"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Each instance of Wedge is a polyhedron with five sides, two of which are (parallel, congruent) triangles and three of which are rectangles; any cross-section of a wedge parallel to its two triangular ends is a triangle congruent to those ends.</rdfs:comment>
+        <rdfs:comment> Each instance of Wedge is a polyhedron with five sides, two of which are (parallel, congruent) triangles and three of which are rectangles; any cross-section of a wedge parallel to its two triangular ends is a triangle congruent to those ends.</rdfs:comment>
     </owl:Class>
     
 
@@ -3375,6 +3405,52 @@ Things that are timeless -- such as mathematical sets, Collections, and numbers 
 
     <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#Yogurt">
         <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#DairyProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing -->
+
+    <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorGreen -->
+
+    <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorGreen">
+        <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorOrange -->
+
+    <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorOrange">
+        <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorRed -->
+
+    <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorRed">
+        <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorWhite -->
+
+    <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorWhite">
+        <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorYellow -->
+
+    <owl:Class rdf:about="http://www.chalmers.se/ontologies/ssy236Ontology.owl#hasColorYellow">
+        <rdfs:subClassOf rdf:resource="http://www.chalmers.se/ontologies/ssy236Ontology.owl#abstractThing"/>
     </owl:Class>
     
 
@@ -3601,5 +3677,5 @@ Things that are timeless -- such as mathematical sets, Collections, and numbers 
 
 
 
-<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
 

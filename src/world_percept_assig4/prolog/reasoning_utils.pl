@@ -22,7 +22,7 @@
 %% @param Object2    Second object.
 %% @param Relation   Spatial relation (e.g., 'close_to', 'far_from').
 near_object(Object1, Object2, Relation) :-
-    % Dummy condition to infer proximity
+    % Dummy condition toget_class infer proximity
     rdf(Object1, ontology:distance_to, Distance),
     (Distance < 1.0 -> Relation = close_to ; Relation = far_from).
 
