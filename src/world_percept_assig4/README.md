@@ -49,3 +49,9 @@ for example: `rosservice call /goto_object "{obj: "bookshelf"}"`
 And you can see the robot navigate to the object, together with the trajectory in the Rviz Environment. (Remember to add "Marker" and select topic to be "visualization_marker")
 
 rosservice call /goto_object "{obj: "first_2015_trash_can"}"
+
+Step 11:
+Decision tree test
+pip3 install scikit-learn
+rosservice call /decide_object "{taste_preference: 'sweet', prefers_alcohol: true, budget: 'high', gender: 'male', age: 25}"
+

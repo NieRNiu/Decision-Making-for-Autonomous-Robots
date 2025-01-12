@@ -184,7 +184,8 @@ bool srv_update_callback(world_percept_assig4::UpdateObjectList::Request  &req,
         ROS_INFO("Age: %d", req.age);
 
         // 构造命令行字符串，调用 Python 脚本并传递参数
-        std::string command = "python3 /home/user/exchange/SSY236_group8/src/world_percept_assig4/src/decision_tree_predict.py '" + req.taste_preference + "' " + 
+
+        std::string command = "python3 /home/student/ros/workspaces/SSY236_group8/src/world_percept_assig4/src/decision_tree_predict.py '" + req.taste_preference + "' " + 
                               std::to_string(req.prefers_alcohol) + " '" + req.budget + "' '" + 
                               req.gender + "' " + std::to_string(req.age);
         
