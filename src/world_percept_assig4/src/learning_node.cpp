@@ -183,13 +183,12 @@ bool srv_update_callback(world_percept_assig4::UpdateObjectList::Request  &req,
         ROS_INFO("Gender: %s", req.gender.c_str());
         ROS_INFO("Age: %d", req.age);
 
-        // 构造命令行字符串，调用 Python 脚本并传递参数
-
+        // call a Python script and passes it parameters.
         std::string command = "python3 /home/student/ros/workspaces/SSY236_group8/src/world_percept_assig4/src/decision_tree_predict.py '" + req.taste_preference + "' " + 
                               std::to_string(req.prefers_alcohol) + " '" + req.budget + "' '" + 
                               req.gender + "' " + std::to_string(req.age);
         
-        // 获取 Python 脚本输出
+        // get Python script output
         std::string result = exec(command.c_str());
 
         res.selected_object = result;
@@ -203,7 +202,7 @@ bool srv_update_callback(world_percept_assig4::UpdateObjectList::Request  &req,
     std::string exec(const char* cmd) {
         char buffer[128];
         std::string result = "";
-        ROS_INFO_STREAM("Executing command: " << cmd);  // 打印命令以调试
+        ROS_INFO_STREAM("Executing command: " << cmd);  
         FILE* fp = popen(cmd, "r");
         if (fp == nullptr) {
             ROS_ERROR("Failed to run command");
@@ -213,7 +212,7 @@ bool srv_update_callback(world_percept_assig4::UpdateObjectList::Request  &req,
             result += buffer;
         }
         fclose(fp);
-        ROS_INFO_STREAM("Python script output: " << result);  // 打印输出以调试
+        ROS_INFO_STREAM("Python script output: " << result);  
         return result;
     }
 
