@@ -1,6 +1,0 @@
-# Name of the target object. You can use "all" to get all the objects in the scene.
-# Request part of the service
-int8 start
----
-# Response part of the service
-bool confirm
